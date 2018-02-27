@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dota2 Pro Team</string>
+
+    <string name="user_icon_transition">Team icon</string>
+
+    <string name="loading_view_error">An error occurred.\nPlease try again later</string>
+    <string name="loading_view_reload">Reload</string>
+    <string name="loading_view_empty">No data</string>
+</resources>
