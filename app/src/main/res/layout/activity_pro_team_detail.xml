@@ -19,7 +19,7 @@
             app:expandedTitleTextAppearance="@style/TransparentText"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <include layout="@layout/activity_contact_detail_parallax"/>
+            <include layout="@layout/activity_prot_team_detail_parallax"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
