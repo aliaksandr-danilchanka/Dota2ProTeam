@@ -9,6 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 import danilchanka.aliaksandr.dota2proteam.di.PerApplication;
 import danilchanka.aliaksandr.dota2proteam.model.RestInterface;
+import danilchanka.aliaksandr.dota2proteam.util.Utils;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -31,7 +32,7 @@ public class ApiModule {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                .connectTimeout(20_000, TimeUnit.MILLISECONDS)
+                .connectTimeout(Utils.CONNECTION_TIMEOUT_IN_MILLIS, TimeUnit.MILLISECONDS)
                 .build();
     }
 

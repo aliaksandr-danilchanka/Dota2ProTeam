@@ -9,6 +9,7 @@ import danilchanka.aliaksandr.dota2proteam.di.component.ComponentManager;
 import danilchanka.aliaksandr.dota2proteam.di.component.DaggerAppComponent;
 import danilchanka.aliaksandr.dota2proteam.module.ApiModule;
 import danilchanka.aliaksandr.dota2proteam.module.AppModule;
+import danilchanka.aliaksandr.dota2proteam.util.Utils;
 import io.paperdb.Paper;
 
 public class Dota2ProTeamApp extends Application {
@@ -32,7 +33,7 @@ public class Dota2ProTeamApp extends Application {
     private void initComponent() {
         sAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
-                .apiModule(new ApiModule("https://api.opendota.com/api/"))
+                .apiModule(new ApiModule(Utils.LINK))
                 .build();
     }
 }

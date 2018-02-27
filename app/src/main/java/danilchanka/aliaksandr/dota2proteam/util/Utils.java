@@ -8,6 +8,10 @@ import android.view.inputmethod.InputMethodManager;
 
 public class Utils {
 
+    public final static String LINK = "https://api.opendota.com/api/";
+
+    final public static long CONNECTION_TIMEOUT_IN_MILLIS = 20_000;
+
     public static void hideSoftKeyboard(Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
