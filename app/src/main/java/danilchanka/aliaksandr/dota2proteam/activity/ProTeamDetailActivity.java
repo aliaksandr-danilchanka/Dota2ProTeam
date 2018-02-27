@@ -1,11 +1,11 @@
 package danilchanka.aliaksandr.dota2proteam.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import danilchanka.aliaksandr.dota2proteam.R;
+import danilchanka.aliaksandr.dota2proteam.activity.base.BaseFragmentActivity;
 
-public class ProTeamDetailActivity extends AppCompatActivity {
+public class ProTeamDetailActivity extends BaseFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
