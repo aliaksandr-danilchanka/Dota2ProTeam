@@ -12,4 +12,9 @@ public class ProTeamDetailActivity extends BaseFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pro_team_detail);
     }
+
+    @Override
+    protected int getFragmentContainerId() {
+        return R.id.content_pro_team_detail;
+    }
 }
