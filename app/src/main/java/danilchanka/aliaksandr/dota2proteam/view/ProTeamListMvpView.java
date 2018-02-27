@@ -1,10 +1,9 @@
 package danilchanka.aliaksandr.dota2proteam.view;
 
-import com.arellomobile.mvp.MvpView;
-
 import java.util.ArrayList;
 
 import danilchanka.aliaksandr.dota2proteam.entity.ProTeam;
+import danilchanka.aliaksandr.dota2proteam.view.base.MvpView;
 
 public interface ProTeamListMvpView extends MvpView {
 
