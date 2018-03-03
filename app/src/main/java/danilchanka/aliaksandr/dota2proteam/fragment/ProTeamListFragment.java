@@ -2,6 +2,7 @@ package danilchanka.aliaksandr.dota2proteam.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,7 +44,12 @@ public class ProTeamListFragment extends BaseMvpFragment<ProTeamListMvpView, Pro
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentComponent().inject(this);
-        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setModelView(this);
     }
 
     @Override
@@ -53,7 +59,7 @@ public class ProTeamListFragment extends BaseMvpFragment<ProTeamListMvpView, Pro
         initRecyclerView();
         mSwipeToRefreshLayout.setOnRefreshListener(() -> {
             mSwipeToRefreshLayout.setRefreshing(false);
-            getPresenter().onSwipeToRefresh();
+            getViewModel().onSwipeToRefresh();
         });
         return view;
     }
@@ -74,7 +80,7 @@ public class ProTeamListFragment extends BaseMvpFragment<ProTeamListMvpView, Pro
 
     @Override public void showError() {
         mLoadingView.setState(LoadingView.State.ERROR);
-        mLoadingView.setOnReloadClickListener(getPresenter()::onReloadClick);
+        mLoadingView.setOnReloadClickListener(getViewModel()::onReloadClick);
     }
 
     @Override public void showRefreshingError() {

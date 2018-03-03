@@ -3,9 +3,9 @@ package danilchanka.aliaksandr.dota2proteam.view;
 import java.util.ArrayList;
 
 import danilchanka.aliaksandr.dota2proteam.entity.ProTeam;
-import danilchanka.aliaksandr.dota2proteam.view.base.MvpView;
+import eu.inloop.viewmodel.IView;
 
-public interface ProTeamListMvpView extends MvpView {
+public interface ProTeamListMvpView extends IView {
 
     void showProTeamList(ArrayList<ProTeam> proTeamList);
 

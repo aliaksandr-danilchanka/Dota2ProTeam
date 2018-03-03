@@ -1,5 +1,9 @@
 package danilchanka.aliaksandr.dota2proteam.presenter;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -14,7 +18,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 @PerFragment
-public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamListMvpView>{
+public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamListMvpView> {
 
     @Inject
     ProTeamModel mProTeamModel;
@@ -22,11 +26,18 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
     private ArrayList<ProTeam> mProTeams;
     private ViewState mViewState = ViewState.INIT;
 
-    @Inject public ProTeamListMvpPresenter() {
+    @Inject
+    public ProTeamListMvpPresenter() {
     }
 
-    @Override public void attachView(ProTeamListMvpView mvpView) {
-        super.attachView(mvpView);
+    public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState) {
+        super.onCreate(arguments, savedInstanceState);
+        getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public void onBindView(@NonNull ProTeamListMvpView mvpView) {
+        super.onBindView(mvpView);
         if (getViewState() == ViewState.INIT && mProTeams == null) {
             loadAndRefreshContacts();
         } else {
@@ -61,47 +72,45 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
                 mProTeamModel.loadProTeamList()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<ArrayList<ProTeam>>() {
+                        .subscribeWith(new DisposableObserver<ArrayList<ProTeam>>() {
 
-                    @Override
-                    public void onNext(ArrayList<ProTeam> proTeams) {
-                        mProTeams = proTeams;
-                        if (proTeams == null) {
-                            setViewState(ViewState.ERROR);
-                        } else {
-                            setViewState(ViewState.NORMAL);
-                        }
-                    }
+                            @Override
+                            public void onNext(ArrayList<ProTeam> proTeams) {
+                                mProTeams = proTeams;
+                                if (proTeams == null) {
+                                    setViewState(ViewState.ERROR);
+                                } else {
+                                    setViewState(ViewState.NORMAL);
+                                }
+                            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                        setViewState(ViewState.ERROR);
-                    }
+                            @Override
+                            public void onError(Throwable e) {
+                                e.printStackTrace();
+                                setViewState(ViewState.ERROR);
+                            }
 
-                    @Override
-                    public void onComplete() {
+                            @Override
+                            public void onComplete() {
 
-                    }
-                }));
+                            }
+                        }));
     }
 
     private void showViewState() {
-        if (isViewAttached()) {
-            switch (mViewState) {
-                case NORMAL:
-                    if (mProTeams.isEmpty()) {
-                        getMvpView().showEmpty();
-                    } else {
-                        getMvpView().showProTeamList(mProTeams);
-                    }
-                    break;
-                case LOADING:
-                    getMvpView().showLoading();
-                    break;
-                case ERROR:
-                    getMvpView().showError();
-            }
+        switch (mViewState) {
+            case NORMAL:
+                if (mProTeams.isEmpty()) {
+                    getViewOptional().showEmpty();
+                } else {
+                    getViewOptional().showProTeamList(mProTeams);
+                }
+                break;
+            case LOADING:
+                getViewOptional().showLoading();
+                break;
+            case ERROR:
+                getViewOptional().showError();
         }
     }
 

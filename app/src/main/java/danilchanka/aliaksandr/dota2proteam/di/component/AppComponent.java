@@ -15,6 +15,4 @@ public interface AppComponent {
     ProTeamModel proTeamModel();
 
     Context context();
-
-    ComponentManager componentManager();
 }
