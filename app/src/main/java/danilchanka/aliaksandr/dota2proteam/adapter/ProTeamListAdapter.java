@@ -36,7 +36,7 @@ public class ProTeamListAdapter extends SimpleRecyclerAdapter<ProTeam> {
         @BindView(R.id.txtName)
         TextView mTxtName;
         @BindView(R.id.txtRating)
-        TextView mTxtPhone;
+        TextView mTxtRating;
 
         public ProTeamViewHolder(Context context, View itemView) {
             super(context, itemView);
@@ -46,7 +46,7 @@ public class ProTeamListAdapter extends SimpleRecyclerAdapter<ProTeam> {
         protected void bind(ProTeam proTeam) {
             super.bind(proTeam);
             mTxtName.setText(proTeam.getName());
-            mTxtPhone.setText(String.format("%s", proTeam.getRating()));
+            mTxtRating.setText(String.format("%s", proTeam.getRating()));
 
             if (proTeam.getLogo_url() != null) {
                 Picasso.with(mRelativeLayout.getContext())

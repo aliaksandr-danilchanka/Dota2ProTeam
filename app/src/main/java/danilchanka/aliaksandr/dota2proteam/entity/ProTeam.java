@@ -1,8 +1,11 @@
 package danilchanka.aliaksandr.dota2proteam.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class ProTeam {
+public class ProTeam implements Parcelable {
 
     /**
      * team_id : 2163
@@ -25,6 +28,46 @@ public class ProTeam {
     private String name;
     private String tag;
     private String logo_url;
+
+    protected ProTeam(Parcel in) {
+        teamId = in.readInt();
+        rating = in.readDouble();
+        wins = in.readInt();
+        losses = in.readInt();
+        lastMatchTime = in.readInt();
+        name = in.readString();
+        tag = in.readString();
+        logo_url = in.readString();
+    }
+
+    public static final Creator<ProTeam> CREATOR = new Creator<ProTeam>() {
+        @Override
+        public ProTeam createFromParcel(Parcel in) {
+            return new ProTeam(in);
+        }
+
+        @Override
+        public ProTeam[] newArray(int size) {
+            return new ProTeam[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(teamId);
+        parcel.writeDouble(rating);
+        parcel.writeInt(wins);
+        parcel.writeInt(losses);
+        parcel.writeInt(lastMatchTime);
+        parcel.writeString(name);
+        parcel.writeString(tag);
+        parcel.writeString(logo_url);
+    }
 
     public int getTeamId() {
         return teamId;

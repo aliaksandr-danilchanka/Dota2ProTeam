@@ -7,5 +7,11 @@
     <string name="loading_view_reload">Reload</string>
     <string name="loading_view_empty">No data</string>
 
+    <string name="pro_team_rating">Rating:</string>
+    <string name="pro_team_wins">Wins:</string>
+    <string name="pro_team_losses">Losses:</string>
+    <string name="pro_team_tag">Tag:</string>
+    <string name="pro_no_data">-</string>
+
     <string name="error_refreshing_contact_list">An error occurred while refreshing contact list</string>
 </resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtRatingLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_between_elements"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:layout_alignParentTop="true"
+            android:text="@string/pro_team_rating"/>
+
+        <TextView
+            android:id="@+id/txtRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_team_rating"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:layout_toRightOf="@+id/txtRatingLogo"
+            android:layout_marginLeft="@dimen/margin_between_text"/>
+
+        <TextView
+            android:id="@+id/txtWinsLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRatingLogo"
+            android:layout_marginLeft="@dimen/margin_between_elements"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@string/pro_team_wins"/>
+
+        <TextView
+            android:id="@+id/txtWins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_team_rating"
+            android:layout_below="@+id/txtRatingLogo"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:layout_toRightOf="@+id/txtWinsLogo"
+            android:layout_marginLeft="@dimen/margin_between_text"/>
+
+        <TextView
+            android:id="@+id/txtLossesLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtWinsLogo"
+            android:layout_marginLeft="@dimen/margin_between_elements"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@string/pro_team_losses"/>
+
+        <TextView
+            android:id="@+id/txtLosses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_team_rating"
+            android:layout_below="@+id/txtWinsLogo"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:layout_toRightOf="@+id/txtLossesLogo"
+            android:layout_marginLeft="@dimen/margin_between_text"/>
+
+        <TextView
+            android:id="@+id/txtTagLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLossesLogo"
+            android:layout_marginLeft="@dimen/margin_between_elements"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@string/pro_team_tag"/>
+
+        <TextView
+            android:id="@+id/txtTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pro_team_rating"
+            android:layout_below="@+id/txtLossesLogo"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:layout_toRightOf="@+id/txtTagLogo"
+            android:layout_marginLeft="@dimen/margin_between_text"/>
+
+    </RelativeLayout>
+
+</ScrollView>
