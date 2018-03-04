@@ -4,6 +4,7 @@ import dagger.Component;
 import danilchanka.aliaksandr.dota2proteam.di.PerFragment;
 import danilchanka.aliaksandr.dota2proteam.fragment.ProTeamDetailFragment;
 import danilchanka.aliaksandr.dota2proteam.fragment.ProTeamListFragment;
+import danilchanka.aliaksandr.dota2proteam.presenter.ProTeamDetailMvpPresenter;
 import danilchanka.aliaksandr.dota2proteam.presenter.ProTeamListMvpPresenter;
 
 /**
@@ -18,4 +19,6 @@ public interface FragmentComponent {
     void inject(ProTeamListFragment fragment);
 
     void inject(ProTeamListMvpPresenter presenter);
+
+    void inject(ProTeamDetailMvpPresenter presenter);
 }

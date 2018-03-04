@@ -26,4 +26,8 @@ public class ProTeamModel {
                 .doOnNext(proTeams -> Paper.book(PaperHelper.BOOK_DEFAULT).write(PaperHelper.PRO_TEAM_LIST, proTeams));
     }
 
+    public Observable<ProTeam> loadProTeamDetail(int teamId) {
+        return mRestInterface.getProTeamDetail(teamId);
+    }
+
 }

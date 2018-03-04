@@ -12,5 +12,5 @@ public interface RestInterface {
     Observable<ArrayList<ProTeam>> getProTeamList();
 
     @GET("teams/{team_id}")
-    Observable<ProTeam> getProTeamDetail(@Path("team_id") String teamId);
+    Observable<ProTeam> getProTeamDetail(@Path("team_id") int teamId);
 }

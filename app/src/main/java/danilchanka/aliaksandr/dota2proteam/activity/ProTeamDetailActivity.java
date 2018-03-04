@@ -39,7 +39,7 @@ public class ProTeamDetailActivity extends BaseFragmentActivity {
         setUpAppBar();
 
         if (savedInstanceState == null) {
-            addFragment(ProTeamDetailFragment.newInstance(mProTeam));
+            addFragment(ProTeamDetailFragment.newInstance(mProTeam.getTeamId()));
         }
     }
 
