@@ -13,7 +13,9 @@ import danilchanka.aliaksandr.dota2proteam.di.PerFragment;
 import danilchanka.aliaksandr.dota2proteam.entity.ProTeam;
 import danilchanka.aliaksandr.dota2proteam.model.ProTeamModel;
 import danilchanka.aliaksandr.dota2proteam.presenter.base.BaseLoadingMvpPresenter;
+import danilchanka.aliaksandr.dota2proteam.util.PaperHelper;
 import danilchanka.aliaksandr.dota2proteam.view.ProTeamListMvpView;
+import io.paperdb.Paper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -55,11 +57,11 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
     }
 
     public void onSwipeToRefresh() {
-        loadAndRefreshContacts();
+        refreshContacts();
     }
 
     public void refreshContactList() {
-        loadAndRefreshContacts();
+        refreshContacts();
     }
 
     private ViewState getViewState() {
@@ -70,6 +72,32 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
         mViewState = state;
         showViewState();
     }
+
+    private void refreshContacts() {
+        addSubscription(
+                mProTeamModel.loadProTeamList()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<ArrayList<ProTeam>>() {
+                            @Override
+                            public void onComplete() {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                e.printStackTrace();
+                                getViewOptional().showRefreshingError();
+                            }
+
+                            @Override
+                            public void onNext(ArrayList<ProTeam> proTeams) {
+                                mProTeams = proTeams;
+                                setViewState(ViewState.NORMAL);
+                            }
+                        }));
+    }
+
 
     private void loadAndRefreshContacts() {
         setViewState(ViewState.LOADING);
@@ -92,7 +120,7 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
                             @Override
                             public void onError(Throwable e) {
                                 e.printStackTrace();
-                                setViewState(ViewState.ERROR);
+                                getDataFromPaper();
                             }
 
                             @Override
@@ -100,6 +128,15 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
 
                             }
                         }));
+    }
+
+    private void getDataFromPaper(){
+        mProTeams = Paper.book(PaperHelper.BOOK_DEFAULT).read(PaperHelper.PRO_TEAM_LIST);
+        if (mProTeams == null) {
+            setViewState(ViewState.ERROR);
+        } else {
+            setViewState(ViewState.NORMAL);
+        }
     }
 
     private void showViewState() {

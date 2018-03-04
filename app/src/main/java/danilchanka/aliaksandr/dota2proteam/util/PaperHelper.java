@@ -1,6 +1,6 @@
 package danilchanka.aliaksandr.dota2proteam.util;
 
-public class RxPaperHelper {
+public class PaperHelper {
 
     public static final String BOOK_DEFAULT = "BOOK_DEFAULT";
 
