@@ -107,7 +107,7 @@ public class ProTeamListFragment extends BaseMvpFragment<ProTeamListMvpView, Pro
     }
 
     @Override public void showRefreshingError() {
-        Toast.makeText(getContext(), R.string.error_refreshing_contact_list, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), R.string.error_refreshing_pro_team_list, Toast.LENGTH_LONG).show();
     }
 
     private void initRecyclerView() {

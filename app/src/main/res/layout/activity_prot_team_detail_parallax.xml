@@ -13,6 +13,7 @@
 
     <ImageView
         android:id="@+id/imgUserIcon"
+        android:scaleType="centerInside"
         android:layout_width="@dimen/contact_image_size_large"
         android:layout_height="@dimen/contact_image_size_large"
         android:transitionName="@string/user_icon_transition"
