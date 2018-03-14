@@ -42,7 +42,7 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
     public void onBindView(@NonNull ProTeamListMvpView mvpView) {
         super.onBindView(mvpView);
         if (getViewState() == ViewState.INIT && mProTeams == null) {
-            loadAndRefreshContacts();
+            loadAndRefreshProTeams();
         } else {
             showViewState();
         }
@@ -53,15 +53,15 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
     }
 
     public void onReloadClick() {
-        loadAndRefreshContacts();
+        loadAndRefreshProTeams();
     }
 
     public void onSwipeToRefresh() {
-        refreshContacts();
+        refreshProTeams();
     }
 
-    public void refreshContactList() {
-        refreshContacts();
+    public void refreshProTeamList() {
+        refreshProTeams();
     }
 
     private ViewState getViewState() {
@@ -73,7 +73,7 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
         showViewState();
     }
 
-    private void refreshContacts() {
+    private void refreshProTeams() {
         addSubscription(
                 mProTeamModel.loadProTeamList()
                         .subscribeOn(Schedulers.io())
@@ -99,7 +99,7 @@ public class ProTeamListMvpPresenter extends BaseLoadingMvpPresenter<ProTeamList
     }
 
 
-    private void loadAndRefreshContacts() {
+    private void loadAndRefreshProTeams() {
         setViewState(ViewState.LOADING);
         addSubscription(
                 mProTeamModel.loadProTeamList()
